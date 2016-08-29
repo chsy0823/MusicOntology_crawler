@@ -1,0 +1,3 @@
+/Users/elenore/ClionProjects/musicbrainz_api/build/CMakeFiles/edit_cache.dir
+/Users/elenore/ClionProjects/musicbrainz_api/build/CMakeFiles/rebuild_cache.dir
+/Users/elenore/ClionProjects/musicbrainz_api/build/CMakeFiles/musicbrainz_api.dir
