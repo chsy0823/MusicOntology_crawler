@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xml:base="http://www.eswc2006.org/technologies/ontology">
+
+    <mo:MusicArtist rdf:about="&user;Evanescence">
+        <rdfs:label>Evanescence</rdfs:label>
+        <foaf:name>Evanescence</foaf:name>
+        <mo:origin>
+            <usps:MailingLocation>
+                <cyc:inRegion rdf:resource="&geo;Bundang-gu"/>
+            </usps:MailingLocation>
+        </mo:origin>
+        <foaf:made rdf:parseType="Collection">
+            <mo:Release>
+                <dc:title>Fallen</dc:title>
+                <mo:record rdf:parseType="Collection">
+                <mo:Record>
+                    <mo:track>
+                        <mo:Track rdf:ID="&user;Going_Under">
+                            <dc:title>Going Under</dc:title>
+                            <mo:track_number>1</mo:track_number>
+                        </mo:Track>
+                    </mo:track>
+                </mo:Record>
+                <mo:Record>
+                    <mo:track>
+                        <mo:Track rdf:ID="&user;Going_Under">
+                            <dc:title>Going Under</dc:title>
+                            <mo:track_number>1</mo:track_number>
+                        </mo:Track>
+                    </mo:track>
+                </mo:Record>
+            </mo:Release>
+            <mo:Release>
+                <dc:title>Fallen</dc:title>
+                <mo:record rdf:parseType="Collection">
+                <mo:Record>
+                    <mo:track>
+                        <mo:Track rdf:ID="&user;Going_Under">
+                            <dc:title>Going Under</dc:title>
+                            <mo:track_number>1</mo:track_number>
+                        </mo:Track>
+                    </mo:track>
+                </mo:Record>
+                <mo:Record>
+                    <mo:track>
+                        <mo:Track rdf:ID="&user;Going_Under">
+                            <dc:title>Going Under</dc:title>
+                            <mo:track_number>1</mo:track_number>
+                        </mo:Track>
+                    </mo:track>
+                </mo:Record>
+            </mo:Release>
+        </foaf:made>
+    </mo:MusicArtist>
+</rdf:RDF>
