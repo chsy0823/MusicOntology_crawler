@@ -12,7 +12,7 @@ MusicBrainzSearcher::~MusicBrainzSearcher(void) {
 
 }
 
-void MusicBrainzSearcher::setFileList(std::list<MusicBrainz5::CArtist> artistList) {
+void MusicBrainzSearcher::setFileList(std::list<MusicBrainz5::CArtist*> artistList) {
 
     this->artistList = artistList;
 }

@@ -24,7 +24,7 @@ class MusicBrainzSearcher {
 
 private :
 
-    std::list<MusicBrainz5::CArtist> artistList;
+    std::list<MusicBrainz5::CArtist*> artistList;
     const int MAX = 50;
     void searchRecording(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query);
     void searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query);
@@ -35,7 +35,7 @@ public :
     ~MusicBrainzSearcher();
 
     void DoSearch(const std::string Entity, const std::string Search);
-    void setFileList(std::list<MusicBrainz5::CArtist> artistList);
+    void setFileList(std::list<MusicBrainz5::CArtist*> artistList);
 };
 
 
