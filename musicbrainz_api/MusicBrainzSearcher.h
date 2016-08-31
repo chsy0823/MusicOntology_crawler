@@ -38,5 +38,7 @@ public :
     void setFileList(std::list<MusicBrainz5::CArtist*> artistList);
 };
 
+//64482	f4a31f0a-51dd-4fa7-986d-3095c40c5ed9	Evanescence	Evanescence	1995	\N	\N	\N	\N	\N	2	222	\N		0	2014-04-28 10:00:31.635889+00	f	5255	\N
+
 
 #endif //MUSICBRAINZ_API_MUSICBRAINZSEARCHER_H
