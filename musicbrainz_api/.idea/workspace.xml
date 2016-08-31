@@ -80,11 +80,11 @@
       <file leaf-file-name="MusicBrainzSearcher.h" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MusicBrainzSearcher.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+            <state relative-caret-position="600">
+              <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
               <folding>
                 <element signature="e#140#158#0" expanded="true" />
-                <marker date="1472555622000" expanded="true" signature="139:352" ph="..." />
+                <marker date="1472635070000" expanded="true" signature="139:352" ph="..." />
               </folding>
             </state>
           </provider>
@@ -411,12 +411,12 @@
       <option name="presentableId" value="Default" />
       <updated>1472481601160</updated>
       <workItem from="1472481604713" duration="5366000" />
-      <workItem from="1472494652042" duration="18270000" />
+      <workItem from="1472494652042" duration="18477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23636000" />
+    <option name="totallyTimeSpent" value="23843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="344" y="86" width="1975" height="1229" extended-state="0" />
@@ -424,7 +424,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16658227" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2637931" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2637931" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -583,11 +583,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MusicBrainzSearcher.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
+        <state relative-caret-position="600">
+          <caret line="40" column="2" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="2" />
           <folding>
             <element signature="e#140#158#0" expanded="true" />
-            <marker date="1472555622000" expanded="true" signature="139:352" ph="..." />
+            <marker date="1472635070000" expanded="true" signature="139:352" ph="..." />
           </folding>
         </state>
       </provider>
