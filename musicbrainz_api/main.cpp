@@ -31,7 +31,6 @@
  */
 
 #include "MusicBrainzSearcher.h"
-#include "FIleHandler.h"
 
 int main(int argc, const char *argv[])
 {

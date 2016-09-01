@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "MusicBrainzSearcher.h"
+#include "FIleHandler.h"
 
 MusicBrainzSearcher::MusicBrainzSearcher(void) {
 

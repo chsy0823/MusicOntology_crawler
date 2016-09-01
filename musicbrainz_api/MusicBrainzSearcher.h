@@ -6,14 +6,7 @@
 #define MUSICBRAINZ_API_MUSICBRAINZSEARCHER_H
 
 
-#include <sstream>
-#include <list>
 
-#include "musicbrainz5/Query.h"
-#include "musicbrainz5/HTTPFetch.h"
-#include "musicbrainz5/ReleaseGroup.h"
-#include "musicbrainz5/Release.h"
-#include "musicbrainz5/Recording.h"
 //
 //namespace MusicBrainz5 {
 //    class CQuery;

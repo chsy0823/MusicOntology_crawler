@@ -7,6 +7,16 @@
 
 #include <iostream>
 
+#include <sstream>
+#include <list>
+
+#include "musicbrainz5/Query.h"
+#include "musicbrainz5/HTTPFetch.h"
+#include "musicbrainz5/ReleaseGroup.h"
+#include "musicbrainz5/Release.h"
+#include "musicbrainz5/Recording.h"
+#include "musicbrainz5/Artist.h"
+
 class FIleHandler {
 
 public:
