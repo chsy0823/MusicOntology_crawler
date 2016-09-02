@@ -5,26 +5,27 @@
 #ifndef MUSICBRAINZ_API_FILEHANDLER_H
 #define MUSICBRAINZ_API_FILEHANDLER_H
 
-#include <iostream>
 
+#pragma once
+
+#include <Vector>
+#include "ArtistCopy.h"
 #include <sstream>
 #include <list>
 
-#include "musicbrainz5/Query.h"
-#include "musicbrainz5/HTTPFetch.h"
-#include "musicbrainz5/ReleaseGroup.h"
-#include "musicbrainz5/Release.h"
-#include "musicbrainz5/Recording.h"
-#include "musicbrainz5/Artist.h"
+
 
 class FIleHandler {
 
+private:
+    std::vector<ArtistCopy> artistList;
 public:
 
     FIleHandler();
     ~FIleHandler();
 
     void readFileFromPath(std::string path);
+    std::vector<ArtistCopy> getArtistList();
 };
 
 

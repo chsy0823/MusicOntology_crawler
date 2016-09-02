@@ -2,9 +2,8 @@
 // Created by Elenore on 2016. 8. 30..
 //
 
-#include <iostream>
 #include "MusicBrainzSearcher.h"
-#include "FIleHandler.h"
+
 
 MusicBrainzSearcher::MusicBrainzSearcher(void) {
 
@@ -13,15 +12,16 @@ MusicBrainzSearcher::~MusicBrainzSearcher(void) {
 
 }
 
-void MusicBrainzSearcher::setFileList(std::list<MusicBrainz5::CArtist*> artistList) {
+void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query, int index) {
 
-    this->artistList = artistList;
-}
-
-void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query) {
+    ArtistCopy artist = this->artistList.at(index);
 
     std::list<MusicBrainz5::CReleaseGroup*> totalGroupList;
+    std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
+
     int offset = 0;
+
+    std::cout << "Start read group" <<std::endl;
 
     while(true) {
 
@@ -48,9 +48,17 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
                     MusicBrainz5::CRelease *release = static_cast<MusicBrainz5::CRelease*>(releaseList->Item(j));
                     if(releaseList != NULL) {
+
                         std::cout << "\t--Release title: " << release->Title() << " ID: " << release->ID() << std::endl;
 
-                        DoSearch("recording","reid:"+release->ID());
+                        MusicBrainz5::CQuery Query2("queryexample-1.0");
+
+                        MusicBrainz5::CQuery::tParamMap Params2;
+                        Params2["query"]="reid:"+release->ID();
+                        Params2["limit"]=std::to_string(MAX);
+                        std::vector<MusicBrainz5::CRecording> rel = searchRecording(Params2,Query2);
+                        totalReleaseInGroup[group->ID()] = rel;
+
                         break;
                     }
                 }
@@ -63,13 +71,18 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
         offset+=MAX;
     }
 
+    artist.totalGroupList = totalGroupList;
+    artist.totalReleaseInGroup = totalReleaseInGroup;
+
+    this->artistList[index] = artist;
+
     std::cout << "end group count " << totalGroupList.size()<< std::endl;
 
 }
 
-void MusicBrainzSearcher::searchRecording(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query) {
+std::vector<MusicBrainz5::CRecording> MusicBrainzSearcher::searchRecording(MusicBrainz5::CQuery::tParamMap Params, MusicBrainz5::CQuery& Query) {
 
-    std::list<MusicBrainz5::CRecording> totalRecordList;
+    std::vector<MusicBrainz5::CRecording> totalRecordList;
     int offset = 0;
 
     std::cout << "----------start record " <<std::endl;
@@ -102,8 +115,10 @@ void MusicBrainzSearcher::searchRecording(MusicBrainz5::CQuery::tParamMap Params
 
     std::cout << "----------end record " <<std::endl;
 
+    return totalRecordList;
+
 }
-void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string Search) {
+void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string Search, int index) {
 
     MusicBrainz5::CQuery Query("queryexample-1.0");
 
@@ -114,11 +129,11 @@ void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string S
     try {
 
         if(!Entity.compare("release-group")) {
-            searchReleaseGroup(Params,Query);
+            searchReleaseGroup(Params,Query, index);
             std::cout << "Finished"<<std::endl;
         }
         else {
-            searchRecording(Params,Query);
+            //searchRecording(Params,Query);
         }
 
         //std::cout << "Release Group size: " << Metadata.ReleaseGroupList()->size() << std::endl;
@@ -171,4 +186,24 @@ void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string S
         std::cout << "LastHTTPCode: " << Query.LastHTTPCode() << std::endl;
         std::cout << "LastErrorMessage: " << Query.LastErrorMessage() << std::endl;
     }
+}
+
+void MusicBrainzSearcher::startSearchWithArtistList(std::vector<ArtistCopy> artistList) {
+
+    this->artistList = artistList;
+    struct timespec tim, tim2;
+    tim.tv_sec = 1;
+    tim.tv_nsec = 0;
+
+    for(int i = 0; i<artistList.size(); i++) {
+        ArtistCopy artist = artistList.at(i);
+
+        std::cout << "########## Star search "<< artist.name << "##########" << std::endl;
+        this->DoSearch("release-group","arid:"+artist.gid, i);
+        std::cout << "########## End search "<< artist.name << "##########" << std::endl;
+        nanosleep(&tim, &tim2);
+    }
+
+    XMLMaker xmlMaker;
+    xmlMaker.generateXML(this->artistList);
 }

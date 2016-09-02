@@ -31,14 +31,22 @@
  */
 
 #include "MusicBrainzSearcher.h"
+#include "FIleHandler.h"
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/xml_parser.hpp>
 
 int main(int argc, const char *argv[])
 {
-
     //Search for all releases by Kate Bush
-
     MusicBrainzSearcher searcher;
-    searcher.DoSearch("release-group","artist:Evanescence");
+    FIleHandler fileHandler;
+
+    fileHandler.readFileFromPath("artist_test");
+
+    std::vector<ArtistCopy> artistList = fileHandler.getArtistList();
+
+    searcher.startSearchWithArtistList(artistList);
+
     //DoSearch("recording","reid:977f28ed-837b-4caa-836e-1a17b6808980");
 
     //Search for all releases with 'sensual' in the title
