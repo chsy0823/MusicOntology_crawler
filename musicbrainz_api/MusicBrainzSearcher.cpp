@@ -16,7 +16,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
     ArtistCopy artist = this->artistList.at(index);
 
-    std::list<MusicBrainz5::CReleaseGroup*> totalGroupList;
+    std::vector<MusicBrainz5::CReleaseGroup*> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
 
     int offset = 0;

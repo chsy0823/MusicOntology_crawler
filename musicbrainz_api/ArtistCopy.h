@@ -43,7 +43,7 @@ public:
     std::string begin_area;
     std::string end_area;
 
-    std::list<MusicBrainz5::CReleaseGroup*> totalGroupList;
+    std::vector<MusicBrainz5::CReleaseGroup*> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
 
 };
