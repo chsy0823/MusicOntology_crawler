@@ -35,6 +35,7 @@ void FIleHandler::readFileFromPath(std::string path) {
         std::getline(linestream, artist.id, '\t');
         std::getline(linestream, artist.gid, '\t');
         std::getline(linestream, artist.name, '\t');
+        std::getline(linestream, artist.sort_name, '\t');
         std::getline(linestream, artist.begin_date_year, '\t');
         std::getline(linestream, artist.begin_date_month, '\t');
         std::getline(linestream, artist.begin_date_day, '\t');

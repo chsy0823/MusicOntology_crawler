@@ -16,7 +16,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
     ArtistCopy artist = this->artistList.at(index);
 
-    std::vector<MusicBrainz5::CReleaseGroup*> totalGroupList;
+    std::vector<MusicBrainz5::CReleaseGroup> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
 
     int offset = 0;
@@ -40,16 +40,37 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
             if(group != NULL) {
                 currentMetaCount++;
-                totalGroupList.push_back(group);
+                totalGroupList.push_back(*group);
                 std::cout << "Release Group title: " << group->Title() << " ID: " << group->ID() << std::endl;
-
                 MusicBrainz5::CReleaseList *releaseList = group->ReleaseList();
                 for(int j =0; j< releaseList->Count(); j++) {
 
                     MusicBrainz5::CRelease *release = static_cast<MusicBrainz5::CRelease*>(releaseList->Item(j));
-                    if(releaseList != NULL) {
+
+                    if(release != NULL) {
 
                         std::cout << "\t--Release title: " << release->Title() << " ID: " << release->ID() << std::endl;
+
+//                        MusicBrainz5::CMediumList *mediumList = release->MediumList();
+//
+//                        if(mediumList != NULL) {
+//                            for(int k = 0; k<mediumList->Count(); k++) {
+//
+//                                MusicBrainz5::CMedium *medium = static_cast<MusicBrainz5::CMedium*>(mediumList->Item(k));
+//
+//                                std::cout << "\t\t--Medium title: " << medium->Title() << " Format: " << medium->Format() << std::endl;
+//
+//                                MusicBrainz5::CTrackList *trackList= medium->TrackList();
+//
+//                                for(int p = 0; p<trackList->Count(); p++) {
+//
+//                                    MusicBrainz5::CTrack *track = static_cast<MusicBrainz5::CTrack*>(trackList->Item(p));
+//
+//                                    std::cout << "\t\t\t--Track title: " << track->Title() << " Number: " << track->Number() << std::endl;
+//                                }
+//                            }
+//                        }
+
 
                         MusicBrainz5::CQuery Query2("queryexample-1.0");
 
@@ -58,6 +79,8 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
                         Params2["limit"]=std::to_string(MAX);
                         std::vector<MusicBrainz5::CRecording> rel = searchRecording(Params2,Query2);
                         totalReleaseInGroup[group->ID()] = rel;
+
+                        std::cout << "input group id = "<<group->ID() <<std::endl;
 
                         break;
                     }
@@ -76,7 +99,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
     this->artistList[index] = artist;
 
-    std::cout << "end group count " << totalGroupList.size()<< std::endl;
+    std::cout << "end group count " << artist.totalGroupList.size()<< std::endl;
 
 }
 

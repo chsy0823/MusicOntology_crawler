@@ -11,6 +11,9 @@
 #include "musicbrainz5/ReleaseGroup.h"
 #include "musicbrainz5/Release.h"
 #include "musicbrainz5/Recording.h"
+#include "musicbrainz5/Track.h"
+#include "musicbrainz5/Medium.h"
+#include "musicbrainz5/TrackList.h"
 #include "ArtistCopy.h"
 #include <map>
 #include <list>
@@ -43,7 +46,7 @@ public:
     std::string begin_area;
     std::string end_area;
 
-    std::vector<MusicBrainz5::CReleaseGroup*> totalGroupList;
+    std::vector<MusicBrainz5::CReleaseGroup> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
 
 };

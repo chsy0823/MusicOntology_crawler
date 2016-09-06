@@ -39,7 +39,7 @@ int main(int argc, const char *argv[])
     MusicBrainzSearcher searcher;
     FIleHandler fileHandler;
 
-    fileHandler.readFileFromPath("artist_test");
+    fileHandler.readFileFromPath("/Users/elenore/Documents/Develop/MusicOntology_crawler/musicbrainz_api/artist_test");
 
     std::vector<ArtistCopy> artistList = fileHandler.getArtistList();
 

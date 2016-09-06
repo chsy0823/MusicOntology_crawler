@@ -35,32 +35,48 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
         musicArtist.put("foaf:name", artist.name);
         musicArtist.put("rdfs:label", artist.sort_name);
 
-        madeCollection.put("foaf:made.<xmlattr>.rdf:parseType", "Collection");
+        madeCollection.put("<xmlattr>.rdf:parseType", "Collection");
 
         for(int j=0;j<artist.totalGroupList.size();j++) {
 
             ptree release;
-            MusicBrainz5::CReleaseGroup *releaseGroup = artist.totalGroupList.at(j);
-            std::vector<MusicBrainz5::CRecording> recording = artist.totalReleaseInGroup[releaseGroup->ID()];
+            MusicBrainz5::CReleaseGroup releaseGroup = artist.totalGroupList.at(j);
 
-            release.put("dc:title", releaseGroup->Title());
+            std::vector<MusicBrainz5::CRecording> recordingList = artist.totalReleaseInGroup[releaseGroup.ID()];
+
+            release.put("dc:title", releaseGroup.Title());
 
             ptree records;
+            records.put("<xmlattr>.rdf:parseType","Collection");
 
-            for(int k=0;k<recording.size();k++) {
+            for(int k=0;k<recordingList.size();k++) {
 
+                MusicBrainz5::CRecording recording = recordingList.at(k);
+
+                ptree Record;
+                ptree track;
+                ptree Track;
+
+                Track.put("<xmlattr>.rdf:ID","&user;"+recording.Title());
+                Track.put("dc:title",recording.Title());
+                track.add_child("mo:Track",Track);
+                Record.add_child("mo:track",track);
+                records.add_child("mo:Record",Record);
             }
-            
-            release.put("mo:records.<xmlattr>.rdf:parseType","Collection");
 
+            release.add_child("mo:records",records);
             madeCollection.add_child("mo:Release",release);
         }
+
+        musicArtist.add_child("foaf:made",madeCollection);
 
         pt.add_child("rdf:RDF.mo:MusicArtist", musicArtist);
 
 
-        std::cout << "## " << artist.name << "release-group count :" << artist.totalReleaseInGroup.size() << std::endl;
-
+        std::cout << "## " << artist.name << " release-group count :" << artist.totalReleaseInGroup.size() << std::endl;
 
     }
+
+    write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
+    file.close();
 }
