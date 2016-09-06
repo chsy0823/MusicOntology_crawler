@@ -32,8 +32,6 @@
 
 #include "MusicBrainzSearcher.h"
 #include "FIleHandler.h"
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/xml_parser.hpp>
 
 int main(int argc, const char *argv[])
 {

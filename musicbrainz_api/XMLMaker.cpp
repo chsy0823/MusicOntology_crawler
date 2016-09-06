@@ -38,10 +38,19 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
         madeCollection.put("foaf:made.<xmlattr>.rdf:parseType", "Collection");
 
         for(int j=0;j<artist.totalGroupList.size();j++) {
-            ptree release;
-            MusicBrainz5::CReleaseGroup releaseGroup = artist.totalReleaseInGroup.at(j);
 
-            release.put("dc:title", releaseGroup.Title());
+            ptree release;
+            MusicBrainz5::CReleaseGroup *releaseGroup = artist.totalGroupList.at(j);
+            std::vector<MusicBrainz5::CRecording> recording = artist.totalReleaseInGroup[releaseGroup->ID()];
+
+            release.put("dc:title", releaseGroup->Title());
+
+            ptree records;
+
+            for(int k=0;k<recording.size();k++) {
+
+            }
+            
             release.put("mo:records.<xmlattr>.rdf:parseType","Collection");
 
             madeCollection.add_child("mo:Release",release);
