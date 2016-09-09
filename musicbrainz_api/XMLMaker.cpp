@@ -80,3 +80,26 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
     write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
     file.close();
 }
+
+void XMLMaker::generateJSON(ArtistCopy artist) {
+
+
+    for(int j=0;j<artist.totalGroupList.size();j++) {
+
+        ptree release;
+        MusicBrainz5::CReleaseGroup releaseGroup = artist.totalGroupList.at(j);
+
+        std::vector<MusicBrainz5::CRecording> recordingList = artist.totalReleaseInGroup[releaseGroup.ID()];
+
+        for(int k=0;k<recordingList.size();k++) {
+
+            MusicBrainz5::CRecording recording = recordingList.at(k);
+        }
+    }
+
+        std::cout << "## " << artist.name << " release-group count :" << artist.totalReleaseInGroup.size() << std::endl;
+}
+
+void XMLMaker::saveToMongo(std::string jsonStr) {
+
+}

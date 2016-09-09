@@ -19,6 +19,8 @@ public:
     XMLMaker();
     ~XMLMaker();
     void generateXML(std::vector<ArtistCopy> artistList);
+    void generateJSON(std::vector<ArtistCopy> artistList);
+    void saveToMongo(std::string jsonStr);
 };
 
 
