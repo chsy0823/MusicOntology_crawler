@@ -45,7 +45,7 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
             std::vector<MusicBrainz5::CRecording> recordingList = artist.totalReleaseInGroup[releaseGroup.ID()];
 
             release.put("dc:title", releaseGroup.Title());
-
+            release.put("<xmlattr>.rdf:ID","musicbrainz_"+releaseGroup.ID());
             ptree records;
             records.put("<xmlattr>.rdf:parseType","Collection");
 
@@ -57,7 +57,7 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
                 ptree track;
                 ptree Track;
 
-                Track.put("<xmlattr>.rdf:ID","&user;"+recording.Title());
+                Track.put("<xmlattr>.rdf:ID","musicbrainz_"+recording.ID());
                 Track.put("dc:title",recording.Title());
                 track.add_child("mo:Track",Track);
                 Record.add_child("mo:track",track);
