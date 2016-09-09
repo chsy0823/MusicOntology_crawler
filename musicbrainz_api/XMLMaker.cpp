@@ -15,7 +15,7 @@ XMLMaker::~XMLMaker() {
 
 void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
 
-    std::ofstream file("/Users/Elenore/Documents/out.xml");
+    std::ofstream file("/Users/Elenore/Documents/out2.xml");
     ptree pt;
 
     pt.put("rdf:RDF.<xmlattr>.xmlns:rdf","http://www.w3.org/1999/02/22-rdf-syntax-ns#");

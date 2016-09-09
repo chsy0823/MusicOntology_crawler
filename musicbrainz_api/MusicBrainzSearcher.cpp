@@ -222,6 +222,7 @@ void MusicBrainzSearcher::startSearchWithArtistList(std::vector<ArtistCopy> arti
         ArtistCopy artist = artistList.at(i);
 
         std::cout << "########## Star search "<< artist.name << "##########" << std::endl;
+        std::cout << "########## Offset ID "<< artist.id << "##########" << std::endl;
         this->DoSearch("release-group","arid:"+artist.gid, i);
         std::cout << "########## End search "<< artist.name << "##########" << std::endl;
         nanosleep(&tim, &tim2);
