@@ -213,21 +213,26 @@ void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string S
 
 void MusicBrainzSearcher::startSearchWithArtistList(std::vector<ArtistCopy> artistList) {
 
+    XMLMaker xmlMaker;
+    xmlMaker.connectMongo();
+
     this->artistList = artistList;
     struct timespec tim, tim2;
     tim.tv_sec = 1;
     tim.tv_nsec = 0;
 
     for(int i = 0; i<artistList.size(); i++) {
-        ArtistCopy artist = artistList.at(i);
+        ArtistCopy artist = this->artistList.at(i);
 
         std::cout << "########## Star search "<< artist.name << "##########" << std::endl;
         std::cout << "########## Offset ID "<< artist.id << "##########" << std::endl;
         this->DoSearch("release-group","arid:"+artist.gid, i);
         std::cout << "########## End search "<< artist.name << "##########" << std::endl;
         nanosleep(&tim, &tim2);
+
+        artist = this->artistList.at(i);
+        xmlMaker.generateJSON(artist);
     }
 
-    XMLMaker xmlMaker;
-    xmlMaker.generateXML(this->artistList);
+    //xmlMaker.generateXML(this->artistList);
 }
