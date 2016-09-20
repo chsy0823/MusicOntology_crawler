@@ -20,6 +20,7 @@ std::vector<ArtistCopy> FIleHandler::getArtistList() {
 
 void FIleHandler::readFileFromPath(std::string path) {
 
+    int i = 0;
     this->artistList.clear();
 
     std::ifstream inFile(path);
