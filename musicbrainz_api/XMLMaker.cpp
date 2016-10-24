@@ -16,7 +16,7 @@ XMLMaker::~XMLMaker() {
 
 void XMLMaker::connectMongo() {
 
-    auto uri = mongocxx::uri("mongodb://52.78.92.115:27017");
+    auto uri = mongocxx::uri("mongodb://127.0.0.1:27017");
     this->mongoClient =  mongocxx::client{uri};
 
 }
@@ -88,7 +88,7 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
 
     }
 
-    write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
+    //write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
     file.close();
 }
 

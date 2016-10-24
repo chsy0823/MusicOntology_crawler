@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <Vector>
+#include <vector>
 #include "ArtistCopy.h"
 #include <sstream>
 #include <list>
