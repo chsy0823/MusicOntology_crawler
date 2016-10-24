@@ -47,7 +47,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
                 if(tagList != NULL) {
 
                     int tagNumItem = tagList->NumItems();
-                    std::cout << "tag list size:" << tagList->NumItems() << std::endl;
+                    std::cout << "tag list size:" << tagNumItem << std::endl;
 
                     for(int j=0; j<tagNumItem; j++) {
                         MusicBrainz5::CTag *tag = static_cast<MusicBrainz5::CTag*>(tagList->Item(j));
