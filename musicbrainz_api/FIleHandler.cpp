@@ -29,31 +29,36 @@ void FIleHandler::readFileFromPath(std::string path) {
     std::cout << "Start reading file" << std::endl;
     while(getline(inFile, line)) {
 
-        std::stringstream linestream(line);
+        if(i > 144000) {
+            std::stringstream linestream(line);
 
-        ArtistCopy artist;
+            ArtistCopy artist;
 
-        std::getline(linestream, artist.id, '\t');
-        std::getline(linestream, artist.gid, '\t');
-        std::getline(linestream, artist.name, '\t');
-        std::getline(linestream, artist.sort_name, '\t');
-        std::getline(linestream, artist.begin_date_year, '\t');
-        std::getline(linestream, artist.begin_date_month, '\t');
-        std::getline(linestream, artist.begin_date_day, '\t');
-        std::getline(linestream, artist.end_date_year, '\t');
-        std::getline(linestream, artist.end_date_month, '\t');
-        std::getline(linestream, artist.end_date_day, '\t');
-        std::getline(linestream, artist.type, '\t');
-        std::getline(linestream, artist.area, '\t');
-        std::getline(linestream, artist.gender, '\t');
-        std::getline(linestream, artist.comment, '\t');
-        std::getline(linestream, artist.edits_pending, '\t');
-        std::getline(linestream, artist.last_updated, '\t');
-        std::getline(linestream, artist.ended, '\t');
-        std::getline(linestream, artist.begin_area, '\t');
-        std::getline(linestream, artist.end_area, '\t');
+            std::getline(linestream, artist.id, '\t');
+            std::getline(linestream, artist.gid, '\t');
+            std::getline(linestream, artist.name, '\t');
+            std::getline(linestream, artist.sort_name, '\t');
+            std::getline(linestream, artist.begin_date_year, '\t');
+            std::getline(linestream, artist.begin_date_month, '\t');
+            std::getline(linestream, artist.begin_date_day, '\t');
+            std::getline(linestream, artist.end_date_year, '\t');
+            std::getline(linestream, artist.end_date_month, '\t');
+            std::getline(linestream, artist.end_date_day, '\t');
+            std::getline(linestream, artist.type, '\t');
+            std::getline(linestream, artist.area, '\t');
+            std::getline(linestream, artist.gender, '\t');
+            std::getline(linestream, artist.comment, '\t');
+            std::getline(linestream, artist.edits_pending, '\t');
+            std::getline(linestream, artist.last_updated, '\t');
+            std::getline(linestream, artist.ended, '\t');
+            std::getline(linestream, artist.begin_area, '\t');
+            std::getline(linestream, artist.end_area, '\t');
 
-        this->artistList.push_back(artist);
+            this->artistList.push_back(artist);
+        }
+
+        i++;
+
     }
 
     std::cout << "end reading file" << std::endl;

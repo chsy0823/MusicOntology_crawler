@@ -40,7 +40,8 @@ int main(int argc, const char *argv[])
     FIleHandler fileHandler;
 
     //fileHandler.readFileFromPath("/Users/elenore/Documents/Develop/mbdump/mbdump/artist");
-    fileHandler.readFileFromPath("/Users/elenore/Documents/Develop/MusicOntology_crawler/musicbrainz_api/artist_test");
+    //fileHandler.readFileFromPath("/Users/elenore/Documents/Develop/MusicOntology_crawler/musicbrainz_api/artist_test");
+    fileHandler.readFileFromPath("/home/sclab/Documents/dump/artist");
 
     std::vector<ArtistCopy> artistList = fileHandler.getArtistList();
 

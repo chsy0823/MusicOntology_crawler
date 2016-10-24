@@ -88,7 +88,7 @@ void XMLMaker::generateXML(std::vector<ArtistCopy> artistList) {
 
     }
 
-    write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
+    //write_xml(file,pt,xml_writer_settings<std::string>('\t',1));
     file.close();
 }
 
