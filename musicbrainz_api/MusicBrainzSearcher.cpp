@@ -4,7 +4,6 @@
 
 #include "MusicBrainzSearcher.h"
 
-
 MusicBrainzSearcher::MusicBrainzSearcher(void) {
 
 }
@@ -18,6 +17,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
     std::vector<MusicBrainz5::CReleaseGroup> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
+    std::vector<MusicBrainz5::CTag> totalTagList;
 
     int offset = 0;
 
@@ -31,8 +31,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
         MusicBrainz5::CMetadata Metadata=Query.Query("release-group","","",Params);
 
         MusicBrainz5::CReleaseGroupList *groupList = Metadata.ReleaseGroupList();
-
-        std::cout << "Release Group size: " << groupList->Count() << std::endl;
+        std::cout << "Release group size: " << groupList->Count() << std::endl;
 
         for(int i =0; i < groupList->Count(); i++) {
 
@@ -42,8 +41,22 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
                 currentMetaCount++;
                 totalGroupList.push_back(*group);
                 std::cout << "Release Group title: " << group->Title() << " ID: " << group->ID() << std::endl;
+
+                MusicBrainz5::CTagList *tagList = group->TagList();
+
+                if(tagList != NULL) {
+
+                    int tagNumItem = tagList->NumItems();
+                    std::cout << "tag list size:" << tagList->NumItems() << std::endl;
+
+                    for(int j=0; j<tagNumItem; j++) {
+                        MusicBrainz5::CTag *tag = static_cast<MusicBrainz5::CTag*>(tagList->Item(j));
+                        totalTagList.push_back(*tag);
+                    }
+                }
+
                 MusicBrainz5::CReleaseList *releaseList = group->ReleaseList();
-                for(int j =0; j< releaseList->Count(); j++) {
+                for(int j =0; j<releaseList->Count(); j++) {
 
                     MusicBrainz5::CRelease *release = static_cast<MusicBrainz5::CRelease*>(releaseList->Item(j));
 
@@ -96,6 +109,7 @@ void MusicBrainzSearcher::searchReleaseGroup(MusicBrainz5::CQuery::tParamMap Par
 
     artist.totalGroupList = totalGroupList;
     artist.totalReleaseInGroup = totalReleaseInGroup;
+    artist.tagList = totalTagList;
 
     this->artistList[index] = artist;
 
@@ -147,6 +161,7 @@ void MusicBrainzSearcher::DoSearch(const std::string Entity, const std::string S
 
     MusicBrainz5::CQuery::tParamMap Params;
     Params["query"]=Search;
+    Params["inc"] = "tags";
     Params["limit"]=std::to_string(MAX);
 
     try {

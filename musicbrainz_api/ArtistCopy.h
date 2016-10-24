@@ -15,6 +15,9 @@
 #include "musicbrainz5/Medium.h"
 #include "musicbrainz5/TrackList.h"
 #include "ArtistCopy.h"
+#include "musicbrainz5/TagList.h"
+#include "musicbrainz5/Tag.h"
+
 #include <map>
 #include <list>
 #include <vector>
@@ -48,6 +51,8 @@ public:
 
     std::vector<MusicBrainz5::CReleaseGroup> totalGroupList;
     std::map<std::string, std::vector<MusicBrainz5::CRecording>> totalReleaseInGroup;
+
+    std::vector<MusicBrainz5::CTag> tagList;
 
 };
 

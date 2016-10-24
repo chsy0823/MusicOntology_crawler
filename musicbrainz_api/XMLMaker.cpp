@@ -16,7 +16,7 @@ XMLMaker::~XMLMaker() {
 
 void XMLMaker::connectMongo() {
 
-    auto uri = mongocxx::uri("mongodb://52.78.92.115:27017");
+    auto uri = mongocxx::uri("mongodb://127.0.0.1:27017");
     this->mongoClient =  mongocxx::client{uri};
 
 }
@@ -112,6 +112,15 @@ void XMLMaker::generateJSON(ArtistCopy artist) {
     root["ended"] = artist.ended;
     root["begin_area"] = artist.begin_area;
     root["end_area"] = artist.end_area;
+
+    Json::Value tagList;
+
+    for(int i=0;i<artist.tagList.size();i++) {
+        Json::Value tagValue;
+        MusicBrainz5::CTag tag = artist.tagList.at(i);
+
+        tagValue["name"] = tag.Name();
+    }
 
     Json::Value totalGroupList;
 

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.1)
 project(musicbrainz_api)
 
 find_package(PkgConfig)
@@ -14,4 +14,4 @@ pkg_check_modules(LIBMONGOCXX REQUIRED libmongocxx)
 
 link_directories(/usr/local/lib ${LIBMONGOCXX_LIBRARY_DIRS})
 add_executable(musicbrainz_api ${SOURCE_FILES})
-target_link_libraries(musicbrainz_api /usr/local/lib/libmusicbrainz5cc.dylib ${LIBMONGOCXX_LIBRARIES})
+target_link_libraries(musicbrainz_api /usr/local/lib/libmusicbrainz5cc.so ${LIBMONGOCXX_LIBRARIES})
