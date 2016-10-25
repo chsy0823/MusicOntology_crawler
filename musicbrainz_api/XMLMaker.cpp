@@ -120,7 +120,10 @@ void XMLMaker::generateJSON(ArtistCopy artist) {
         MusicBrainz5::CTag tag = artist.tagList.at(i);
 
         tagValue["name"] = tag.Name();
+        tagList.append(tagValue);
     }
+
+    root["tag_list"] = tagList;
 
     Json::Value totalGroupList;
 
